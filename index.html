@@ -13,6 +13,7 @@
   --light-mint: #f0fdf4;    /* Safe & Relaxing Light Background */
   --dark-text: #111827;     /* Clean Dark Charcoal */
   --white: #ffffff;
+  --muted-text: #6b7280;
 }
 
 body {
@@ -26,7 +27,6 @@ body {
 /* =========================
    PREMIUM FLOATING NAVBAR
 ========================= */
-
 .navbar{
 width:fit-content;
 max-width:1280px;
@@ -49,9 +49,6 @@ box-shadow:
 0 2px 10px rgba(0,0,0,.03);
 }
 
-
-/* LOGO */
-
 .logo{
 display:flex;
 align-items:center;
@@ -67,9 +64,6 @@ white-space:nowrap;
 height:42px;
 width:auto;
 }
-
-
-/* NAV ITEMS */
 
 .nav-links{
 display:flex;
@@ -99,9 +93,6 @@ color:var(--primary-green);
 font-weight:600;
 }
 
-
-/* VOICE */
-
 .voice-btn{
 height:46px;
 padding:0 18px;
@@ -114,68 +105,30 @@ cursor:pointer;
 transition:.25s;
 }
 
-.voice-btn:hover{
-transform:translateY(-2px);
-background:#e1faf0;
-}
-
-
-/* EMERGENCY */
+.voice-btn:hover{ transform:translateY(-2px); background:#e1faf0; }
 
 .emergency-btn{
 height:46px;
 padding:0 22px;
 border-radius:999px;
-background:linear-gradient(
-135deg,
-#ef4444,
-#dc2626
-);
+background:linear-gradient(135deg, #ef4444, #dc2626);
 color:white;
 text-decoration:none;
 display:flex;
 align-items:center;
 gap:10px;
 font-weight:700;
-box-shadow:
-0 10px 25px rgba(239,68,68,.25);
+box-shadow: 0 10px 25px rgba(239,68,68,.25);
 transition:.25s;
 position:relative;
 overflow:hidden;
 }
 
-.emergency-btn:hover{
-transform:translateY(-2px);
-}
-
-.emergency-btn::before{
-display:none;
-}
-
-
-/* MOBILE */
+.emergency-btn:hover{ transform:translateY(-2px); }
 
 @media(max-width:1100px){
-.navbar{
-width:92%;
-padding:18px;
-border-radius:28px;
-flex-direction:column;
-}
-.nav-links{
-justify-content:center;
-flex-wrap:wrap;
-}
-}
-
-@media(max-width:768px){
-.nav-links a{
-font-size:14px;
-padding:10px 14px;
-}
-.logo{
-font-size:24px;
-}
+.navbar{ width:92%; padding:18px; border-radius:28px; flex-direction:column; }
+.nav-links{ justify-content:center; flex-wrap:wrap; }
 }
 
 /* HERO SECTION */
@@ -213,8 +166,6 @@ font-size:24px;
   line-height: 1.6;
 }
 
-
-/* SMART SEARCH & AI CHATBOX COMPONENT */
 .search-container {
   background: var(--white);
   border-radius: 16px;
@@ -232,69 +183,22 @@ font-size:24px;
   padding-bottom: 15px;
 }
 
-.search-main i.main-icon {
-  position: absolute;
-  left: 5px;
-  color: var(--primary-green);
-  font-size: 18px;
-}
+.search-main i.main-icon { position: absolute; left: 5px; color: var(--primary-green); font-size: 18px; }
+.search-main input { width: 100%; padding: 10px 10px 10px 35px; border: none; outline: none; font-size: 15px; }
 
-.search-main input {
-  width: 100%;
-  padding: 10px 10px 10px 35px;
-  border: none;
-  outline: none;
-  font-size: 15px;
-}
-
-.search-dropdowns {
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-}
-
-.select-group {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex: 1;
-  background: #f9fafb;
-  padding: 10px;
-  border-radius: 8px;
-}
-
+.search-dropdowns { display: flex; justify-content: space-between; gap: 15px; }
+.select-group { display: flex; align-items: center; gap: 10px; flex: 1; background: #f9fafb; padding: 10px; border-radius: 8px; }
 .select-group i { color: var(--primary-green); }
-
-.select-group select {
-  border: none;
-  background: transparent;
-  outline: none;
-  width: 100%;
-  font-size: 13px;
-  color: #374151;
-}
+.select-group select { border: none; background: transparent; outline: none; width: 100%; font-size: 13px; color: #374151; }
 
 .btn-search {
-  background: var(--primary-green);
-  color: white;
-  border: none;
-  padding: 0 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
+  background: var(--primary-green); color: white; border: none; padding: 0 20px; border-radius: 8px; cursor: pointer; font-weight: 600;
 }
 
-.hero-image {
-  flex: 0.9;
-  display: flex;
-  justify-content: flex-end;
-}
-
+.hero-image { flex: 0.9; display: flex; justify-content: flex-end; }
 .hero-image img { max-width: 100%; height: auto; }
 
-/* ==========================================
-   STATS PREMIUM CARDS SECTION 
-   ========================================== */
+/* STATS PREMIUM CARDS SECTION */
 .stats-grid {
   display: flex;
   justify-content: center;
@@ -318,30 +222,12 @@ font-size:24px;
   transition: .3s ease;
 }
 
-.stat-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(15, 118, 110, 0.12);
-  border-color: var(--primary-green);
-}
-
-.stat-card h2 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 36px;
-  font-weight: 700;
-  color: var(--primary-green);
-  margin: 0 0 5px 0;
-  letter-spacing: -0.5px;
-}
-
-.stat-card p {
-  margin: 0;
-  color: #4b5563;
-  font-size: 14px;
-  font-weight: 600;
-}
+.stat-card:hover { transform: translateY(-5px); border-color: var(--primary-green); }
+.stat-card h2 { font-family: 'Poppins', sans-serif; font-size: 36px; font-weight: 700; color: var(--primary-green); margin: 0 0 5px 0; }
+.stat-card p { margin: 0; color: #4b5563; font-size: 14px; font-weight: 600; }
 
 /* ==========================================
-   NEW: INFINITE LOGO MARQUEE (IMAGE_771C5D.PNG LOOK)
+   INFINITE MARQUEE ROW (HOSPITALS ONLY)
    ========================================== */
 .partner-marquee-section {
   max-width: 100%;
@@ -351,323 +237,253 @@ font-size:24px;
 }
 
 .partner-tag {
-  background: #fdf2f8;
-  color: #db2777;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  padding: 6px 16px;
-  border-radius: 999px;
-  display: inline-block;
-  margin-bottom: 25px;
-  border: 1px solid rgba(219, 39, 119, 0.1);
+  background: #fdf2f8; color: #db2777; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; padding: 6px 16px; border-radius: 999px; display: inline-block; margin-bottom: 25px; border: 1px solid rgba(219, 39, 119, 0.1);
 }
 
-.partner-marquee-section h2 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 36px;
-  color: var(--dark-text);
-  margin: 0 auto 15px auto;
-  font-weight: 700;
-  max-width: 800px;
-  line-height: 1.3;
-  letter-spacing: -0.5px;
-}
+.partner-marquee-section h2 { font-family: 'Poppins', sans-serif; font-size: 36px; color: var(--dark-text); margin: 0 auto 15px auto; font-weight: 700; }
+.partner-marquee-section p { font-size: 15px; color: #6b7280; max-width: 650px; margin: 0 auto 40px auto; }
 
-.partner-marquee-section p {
-  font-size: 15px;
-  color: #6b7280;
-  max-width: 650px;
-  margin: 0 auto 40px auto;
-  line-height: 1.6;
-}
+.marquee-container { display: flex; width: 100%; overflow: hidden; position: relative; padding: 10px 0; }
+.marquee-container::before, .marquee-container::after { content: ""; height: 100%; width: 150px; position: absolute; z-index: 2; pointer-events: none; }
+.marquee-container::before { left: 0; top: 0; background: linear-gradient(to right, var(--light-mint) 20%, rgba(240, 253, 244, 0) 100%); }
+.marquee-container::after { right: 0; top: 0; background: linear-gradient(to left, var(--light-mint) 20%, rgba(240, 253, 244, 0) 100%); }
 
-/* Container defining viewport clip area */
-.marquee-container {
-  display: flex;
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  padding: 10px 0;
-}
+.marquee-track { display: flex; gap: 20px; width: max-content; animation: scrollMarquee 28s linear infinite; }
+.marquee-track:hover { animation-play-state: paused; }
 
-/* Layering fade shadow effects overlaying ends */
-.marquee-container::before,
-.marquee-container::after {
-  content: "";
-  height: 100%;
-  width: 150px;
-  position: absolute;
-  z-index: 2;
-  pointer-events: none;
-}
-.marquee-container::before {
-  left: 0;
-  top: 0;
-  background: linear-gradient(to right, var(--light-mint) 20%, rgba(240, 253, 244, 0) 100%);
-}
-.marquee-container::after {
-  right: 0;
-  top: 0;
-  background: linear-gradient(to left, var(--light-mint) 20%, rgba(240, 253, 244, 0) 100%);
-}
+.partner-pill { display: flex; align-items: center; gap: 10px; background: var(--white); border: 1px solid rgba(0, 0, 0, 0.06); padding: 10px 22px; border-radius: 999px; white-space: nowrap; text-decoration: none; transition: all 0.2s ease; }
+.partner-pill:hover { border-color: var(--primary-green); transform: scale(1.03); }
+.partner-pill span { font-size: 14px; font-weight: 600; color: #374151; }
 
-/* Tracks wrapping layout list items */
-.marquee-track {
-  display: flex;
-  gap: 20px;
-  width: max-content;
-  animation: scrollMarquee 25s linear infinite;
-}
-
-.marquee-track:hover {
-  animation-play-state: paused; /* Hover korle slide theme pause hobe */
-}
-
-/* Individual Pill UI Elements */
-.partner-pill {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--white);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  padding: 10px 22px;
-  border-radius: 999px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
-  white-space: nowrap;
-}
-
-.partner-pill i {
-  font-size: 16px;
-}
-.partner-pill span {
-  font-size: 14px;
-  font-weight: 600;
-  color: #374151;
-}
-
-/* Continuous looping animation rules */
-@keyframes scrollMarquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-
-/* SECTION HEADINGS */
-.section-title {
-  text-align: center;
-  font-family: 'Poppins', sans-serif;
-  font-size: 28px;
-  color: var(--primary-green);
-  margin: 60px 0 10px 0;
-}
-
-.section-subtitle {
-  text-align: center;
-  color: #6b7280;
-  margin: 0 0 40px 0;
-  font-size: 15px;
-}
+@keyframes scrollMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
 /* ==========================================
-   SECTION 1: CORE AI FEATURES & COMPANION
+   NEW: PREMIUM MAGAZINE NEWS GRID (IMAGE_763EC4.PNG STYLE)
    ========================================== */
-.features-grid {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding: 0 40px;
+.news-section-container {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 60px auto;
+  padding: 0 20px;
 }
 
-.feature-card {
-  background: var(--white);
+.news-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 15px;
+}
+
+.news-label-group .section-tag {
+  color: #db2777;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.news-label-group h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 32px;
+  margin: 0;
+  color: var(--dark-text);
+  font-weight: 700;
+}
+
+/* Navigation Arrows (As seen on top right of image_763ec4.png) */
+.news-nav-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.news-nav-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   border: 1px solid #e5e7eb;
-  width: 260px;
-  padding: 25px;
-  border-radius: 12px;
-  transition: 0.3s;
-}
-
-.feature-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--primary-green);
-  box-shadow: 0 10px 20px rgba(15, 118, 110, 0.05);
-}
-
-.feature-card .icon-box {
-  width: 50px;
-  height: 50px;
-  background: var(--light-mint);
-  border-radius: 10px;
+  background: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 15px;
+  cursor: pointer;
+  color: #4b5563;
+  transition: all 0.2s ease;
 }
 
+.news-nav-btn:hover {
+  background: var(--primary-green);
+  color: var(--white);
+  border-color: var(--primary-green);
+}
+
+/* 4-Column Card Grid Framework */
+.news-magazine-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* Premium Card Architecture (Updated to support Anchor Tag layout) */
+.news-magazine-card {
+  background: var(--white);
+  border-radius: 24px;
+  border: 1px solid #e5e7eb;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none; /* Block default underline */
+  color: inherit; /* Inherit global text colors */
+  cursor: pointer;
+}
+.news-magazine-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(15, 118, 110, 0.06);
+}
+
+/* Thumbnail wrapper with fixed aspect-ratio */
+.news-card-image-wrapper {
+  width: 100%;
+  height: 160px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 16px;
+  background: #f3f4f6;
+}
+
+.news-card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Floating dynamic medical category brand logo placeholder */
+.news-card-brand-icon {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--primary-green);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Text elements matching the screenshot typography scale */
+.news-magazine-card h3 {
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: var(--dark-text);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.news-magazine-card h3:hover {
+  color: var(--primary-green);
+}
+
+.news-card-meta {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.news-card-meta .source-name {
+  color: #4b5563;
+  font-weight: 600;
+}
+
+.news-card-description {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #4b5563;
+  margin: 0 0 16px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* Clean text trimming */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-card-footer {
+  margin-top: auto;
+  border-top: 1px dashed #e5e7eb;
+  padding-top: 10px;
+  font-size: 11px;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.news-card-footer span {
+  font-weight: 600;
+  color: #6b7280;
+}
+
+/* Responsive breakdowns */
+@media (max-width: 1024px) {
+  .news-magazine-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .news-magazine-grid { grid-template-columns: 1fr; }
+  .news-section-header { flex-direction: column; align-items: flex-start; gap: 15px; }
+}
+
+
+/* SECTION HEADINGS general */
+.section-title { text-align: center; font-family: 'Poppins', sans-serif; font-size: 28px; color: var(--primary-green); margin: 60px 0 10px 0; }
+.section-subtitle { text-align: center; color: #6b7280; margin: 0 0 40px 0; font-size: 15px; }
+
+/* FEATURES */
+.features-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; padding: 0 40px; max-width: 1200px; margin: 0 auto; }
+.feature-card { background: var(--white); border: 1px solid #e5e7eb; width: 260px; padding: 25px; border-radius: 12px; transition: 0.3s; }
+.feature-card:hover { transform: translateY(-5px); border-color: var(--primary-green); }
+.feature-card .icon-box { width: 50px; height: 50px; background: var(--light-mint); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; }
 .feature-card .icon-box i { color: var(--primary-green); font-size: 22px; }
 .feature-card h3 { margin: 0 0 10px 0; font-size: 18px; color: var(--dark-text); }
 .feature-card p { margin: 0; color: #6b7280; font-size: 14px; line-height: 1.5; }
 
-/* ==========================================
-   SECTION 2: DISEASE LIVE TRACKING MAP (BD)
-   ========================================== */
-.map-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
-  background: var(--light-mint);
-  border-radius: 16px;
-  border: 1px dashed var(--primary-green);
-}
-
-.map-placeholder {
-  height: 350px;
-  background: #e2e8f0;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #4b5563;
-  font-weight: 500;
-}
-
+/* MAP */
+.map-container { max-width: 1000px; margin: 0 auto; padding: 20px; background: var(--light-mint); border-radius: 16px; border: 1px dashed var(--primary-green); }
+.map-placeholder { height: 350px; background: #e2e8f0; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #4b5563; }
 .map-placeholder i { font-size: 48px; color: var(--primary-green); margin-bottom: 10px; }
-
-.zone-legends {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 20px;
-}
-
+.zone-legends { display: flex; justify-content: center; gap: 30px; margin-top: 20px; }
 .zone { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; }
 .zone-dot { width: 12px; height: 12px; border-radius: 50%; }
 .dot-red { background: #ef4444; }
 .dot-blue { background: #3b82f6; }
 .dot-green { background: #10b981; }
 
-/* ==========================================
-   SECTION 3: DOCTOR & HOSPITAL DIRECTORY
-   ========================================== */
-.directory-grid {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  flex-wrap: wrap;
-  padding: 0 40px;
-  max-width: 1200px;
-  margin: 0 auto 80px auto;
-}
-
-.doc-card {
-  background: var(--white);
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  width: 350px;
-  padding: 20px;
-}
-
+/* DIRECTORY */
+.directory-grid { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; padding: 0 40px; max-width: 1200px; margin: 0 auto 80px auto; }
+.doc-card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 12px; width: 350px; padding: 20px; }
 .doc-info { display: flex; gap: 15px; margin-bottom: 15px; }
 .doc-info i { font-size: 36px; color: var(--primary-green); background: var(--light-mint); padding: 10px; border-radius: 50%; height: fit-content;}
 .doc-details h4 { margin: 0 0 4px 0; font-size: 16px; color: var(--dark-text); }
 .doc-details p { margin: 0; color: #6b7280; font-size: 13px; }
 .doc-details .tag { background: #f3f4f6; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; display: inline-block; margin-top: 5px;}
-
-.doc-meta {
-  border-top: 1px solid #f3f4f6;
-  padding-top: 12px;
-  font-size: 13px;
-  color: #4b5563;
-}
-
+.doc-meta { border-top: 1px solid #f3f4f6; padding-top: 12px; font-size: 13px; color: #4b5563; }
 .meta-line { display: flex; justify-content: space-between; margin-bottom: 6px; }
 .meta-line i { color: var(--primary-green); margin-right: 5px; }
 .hotline { font-weight: 700; color: var(--primary-green); }
+.btn-book{ width:100%; padding:12px; background:var(--primary-green); color:white; border:none; border-radius:10px; margin-top:15px; font-weight: 600; cursor:pointer; transition:.3s; }
+.btn-book:hover{ transform:translateY(-2px); opacity:.9; }
 
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 30px;
-  background: var(--light-mint);
-  border-top: 1px solid #e5e7eb;
-  color: #4b5563;
-  font-size: 14px;
-}
-
-
-.btn-book{
-width:100%;
-padding:12px;
-background:var(--primary-green);
-color:white;
-border:none;
-border-radius:10px;
-margin-top:15px;
-font-weight:600;
-cursor:pointer;
-transition:.3s;
-}
-
-.btn-book:hover{
-transform:translateY(-2px);
-opacity:.9;
-}
-.emergency-btn{
-background:#ef4444;
-color:white;
-padding:8px 14px;
-border-radius:25px;
-font-weight:700;
-text-decoration:none;
-display:flex;
-align-items:center;
-gap:8px;
-position:relative;
-overflow:hidden;
-transition:.3s;
-}
-
-/* hover effect */
-.emergency-btn:hover{
-background:#dc2626;
-transform:translateY(-2px);
-}
-
-/* pulse animation dot */
-.emergency-btn::before{
-content:"";
-position:absolute;
-width:10px;
-height:10px;
-background:white;
-border-radius:50%;
-left:10px;
-top:50%;
-transform:translateY(-50%);
-opacity:0.7;
-animation:pulse 1.5s infinite;
-}
-
-@keyframes pulse{
-0%{
-transform:translateY(-50%) scale(1);
-opacity:0.7;
-}
-100%{
-transform:translateY(-50%) scale(2.5);
-opacity:0;
-}
-}
-.ABC-btn:hover{
-transform:translateY(-2px);
-opacity:.9;
-}
+footer { text-align: center; padding: 30px; background: var(--light-mint); border-top: 1px solid #e5e7eb; color: #4b5563; font-size: 14px; }
 </style>
 </head>
 <body>
@@ -685,21 +501,18 @@ opacity:.9;
     <a href="#map">Outbreak Map</a>
     <a href="#directory">Directory</a>
     <button class="voice-btn"><i class="fa-solid fa-microphone"></i> বাংলা ভয়েস</button>
-    <a href="emergency.html" class="emergency-btn">
-      <i class="fa-solid fa-triangle-exclamation"></i>
-      Emergency
-    </a>
+    <a href="emergency.html" class="emergency-btn"><i class="fa-solid fa-triangle-exclamation"></i> Emergency</a>
   </div>
 </div>
 
-<!-- HERO WRAPPER WITH TRUST GREEN THEME -->
+<!-- HERO WRAPPER -->
 <div class="hero-wrapper">
   <section class="hero">
     <div class="hero-text">
       <h1>Ai Health Assistant<br>For Bangladesh</h1>
       <p>আপনার বিশ্বস্ত স্বাস্থ্য সঙ্গী। কৃত্রিম বুদ্ধিমত্তার সাহায্যে ঘরে বসেই রোগ নির্ণয়, লক্ষণ পরীক্ষা এবং সঠিক ডাক্তার খুঁজুন সহজে ও নিরাপদে।</p>
 
-      <!-- SEARCH BOX WITH AI INTEGRATION ASKING SYMPTOMS -->
+      <!-- SEARCH BOX -->
       <div class="search-container">
         <div class="search-main">
           <i class="fa-solid fa-robot main-icon"></i>
@@ -731,14 +544,13 @@ opacity:.9;
       </div>
     </div>
 
-    <!-- HERO IMAGE DISPLAY (mitul.png) -->
     <div class="hero-image">
       <img src="mitul.png" alt="Health Platform Visual">
     </div>
   </section>
 </div>
 
-<!-- STATS CARDS SECTION WITH COUNTER ATTRIBUTES -->
+<!-- STATS CARDS SECTION -->
 <section class="stats-grid">
   <div class="stat-card">
     <h2 class="counter" data-target="50000" data-suffix="K+">0</h2>
@@ -758,67 +570,120 @@ opacity:.9;
   </div>
 </section>
 
-<!-- INFINITE MARQUEE ROW (MATCHING IMAGE_771C5D.PNG LOOK) -->
+<!-- HOSPITAL INFINITE MARQUEE ROW -->
 <section class="partner-marquee-section">
-  <span class="partner-tag">Trusted Healthcare Data</span>
-  <h2>Integrated with top medical guidelines & facilities</h2>
-  <p>Our data insights are verified against standard guidelines and active national clinical resources to give you safer assistance.</p>
+  <span class="partner-tag">Trusted Healthcare Infrastructure</span>
+  <h2>Real-time Partner Network</h2>
+  <p>Track verified hospital updates and active national medical links instantly across the country.</p>
   
   <div class="marquee-container">
     <div class="marquee-track">
-      <!-- Original Set -->
-      <div class="partner-pill"><i class="fa-solid fa-building-shield" style="color: #0284c7;"></i><span>BSMMU (PG Hospital)</span></div>
-      <div class="partner-pill"><i class="fa-solid fa-hospital" style="color: #dc2626;"></i><span>Dhaka Medical College</span></div>
-      <div class="partner-pill"><i class="fa-solid fa-hand-holding-medical" style="color: #16a34a;"></i><span>DGHS Bangladesh</span></div>
-      <div class="partner-pill"><i class="fa-solid fa-house-medical-check" style="color: #ea580c;"></i><span>Square Hospitals</span></div>
-      <div class="partner-pill"><i class="fa-solid fa-user-doctor" style="color: #2563eb;"></i><span>Evercare BD</span></div>
-      <div class="partner-pill"><i class="fa-solid fa-heart-pulse" style="color: #db2777;"></i><span>National Heart Foundation</span></div>
-      <div class="partner-pill"><i class="fa-solid fa-shield-halved" style="color: #4f46e5;"></i><span>United Hospital</span></div>
-      <div class="partner-pill"><i class="fa-solid fa-kit-medical" style="color: #0d9488;"></i><span>ICDDR,B Research</span></div>
+      <a href="https://www.bsmmu.ac.bd/" target="_blank" class="partner-pill"><i class="fa-solid fa-building-shield" style="color: #0284c7;"></i><span>BSMMU (PG Hospital)</span></a>
+      <a href="https://dmch.gov.bd/" target="_blank" class="partner-pill"><i class="fa-solid fa-hospital" style="color: #dc2626;"></i><span>Dhaka Medical College</span></a>
+      <a href="https://dghs.gov.bd/" target="_blank" class="partner-pill"><i class="fa-solid fa-hand-holding-medical" style="color: #16a34a;"></i><span>DGHS Bangladesh</span></a>
+      <a href="https://www.squarehospital.com/" target="_blank" class="partner-pill"><i class="fa-solid fa-house-medical-check" style="color: #ea580c;"></i><span>Square Hospitals</span></a>
+      <a href="https://www.evercarebd.com/" target="_blank" class="partner-pill"><i class="fa-solid fa-user-doctor" style="color: #2563eb;"></i><span>Evercare BD</span></a>
+      <a href="https://www.nhf.org.bd/" target="_blank" class="partner-pill"><i class="fa-solid fa-heart-pulse" style="color: #db2777;"></i><span>National Heart Foundation</span></a>
       
-      <!-- Duplicated Set for Smooth Seam Loops -->
-      <div class="partner-pill"><i class="fa-solid fa-building-shield" style="color: #0284c7;"></i><span>BSMMU (PG Hospital)</span></div>
-      <div class="partner-pill"><i class="fa-solid fa-hospital" style="color: #dc2626;"></i><span>Dhaka Medical College</span></div>
-      <div class="partner-pill"><i class="fa-solid fa-hand-holding-medical" style="color: #16a34a;"></i><span>DGHS Bangladesh</span></div>
-      <div class="partner-pill"><i class="fa-solid fa-house-medical-check" style="color: #ea580c;"></i><span>Square Hospitals</span></div>
-      <div class="partner-pill"><i class="fa-solid fa-user-doctor" style="color: #2563eb;"></i><span>Evercare BD</span></div>
-      <div class="partner-pill"><i class="fa-solid fa-heart-pulse" style="color: #db2777;"></i><span>National Heart Foundation</span></div>
-      <div class="partner-pill"><i class="fa-solid fa-shield-halved" style="color: #4f46e5;"></i><span>United Hospital</span></div>
-      <div class="partner-pill"><i class="fa-solid fa-kit-medical" style="color: #0d9488;"></i><span>ICDDR,B Research</span></div>
+      <!-- Duplicate Set for Infinity effect -->
+      <a href="https://www.bsmmu.ac.bd/" target="_blank" class="partner-pill"><i class="fa-solid fa-building-shield" style="color: #0284c7;"></i><span>BSMMU (PG Hospital)</span></a>
+      <a href="https://dmch.gov.bd/" target="_blank" class="partner-pill"><i class="fa-solid fa-hospital" style="color: #dc2626;"></i><span>Dhaka Medical College</span></a>
+      <a href="https://dghs.gov.bd/" target="_blank" class="partner-pill"><i class="fa-solid fa-hand-holding-medical" style="color: #16a34a;"></i><span>DGHS Bangladesh</span></a>
+      <a href="https://www.squarehospital.com/" target="_blank" class="partner-pill"><i class="fa-solid fa-house-medical-check" style="color: #ea580c;"></i><span>Square Hospitals</span></a>
+      <a href="https://www.evercarebd.com/" target="_blank" class="partner-pill"><i class="fa-solid fa-user-doctor" style="color: #2563eb;"></i><span>Evercare BD</span></a>
+      <a href="https://www.nhf.org.bd/" target="_blank" class="partner-pill"><i class="fa-solid fa-heart-pulse" style="color: #db2777;"></i><span>National Heart Foundation</span></a>
     </div>
   </div>
 </section>
 
-
 <!-- ==========================================
-     SECTION 1: CORE AI FEATURES & COMPANION
-     ========================================== -->
+     NEW: PREMIUM HEALTH MAGAZINE GRID SECTION (FULLY CLICKABLE)
+     ========================================== */ -->
+<section class="news-section-container">
+  <div class="news-section-header">
+    <div class="news-label-group">
+      <span class="section-tag">TODAY'S FEED</span>
+      <h2>What our users are reading right now</h2>
+    </div>
+    <!-- Arrow utilities from image_763ec4.png -->
+    <div class="news-nav-buttons">
+      <div class="news-nav-btn"><i class="fa-solid fa-arrow-left"></i></div>
+      <div class="news-nav-btn"><i class="fa-solid fa-arrow-right"></i></div>
+    </div>
+  </div>
+
+  <div class="news-magazine-grid">
+    
+    <!-- Card 1: Open in a new tab using target="_blank" -->
+    <a href="https://prothomalo.com/bangladesh/capital/example-dengue-news" target="_blank" class="news-magazine-card">
+      <div class="news-card-image-wrapper">
+        <div class="news-card-brand-icon"><i class="fa-solid fa-virus-covid"></i></div>
+        <img src="https://images.unsplash.com/photo-1584634731339-252c581abfc5?auto=format&fit=crop&w=500&q=80" alt="News">
+      </div>
+      <h3>রাজধানীতে ডেঙ্গুর প্রকোপ বৃদ্ধি, ৪টি হাসপাতালে বিশেষ সেল গঠন</h3>
+      <div class="news-card-meta">সোর্স: <span class="source-name">DGHS / প্রথম আলো</span> • ২ ঘন্টা আগে</div>
+      <p class="news-card-description">বর্ষা মৌসুমের শুরুতেই রাজধানী জুড়ে ডেঙ্গুর আক্রমণ আশঙ্কাজনক হারে বৃদ্ধি পেয়েছে। স্বাস্থ্য অধিদপ্তরের জরুরি বিজ্ঞপ্তিতে নাগরিকদের সচেতন থাকার নির্দেশ দেওয়া হয়েছে। ইতোমধ্যে পরিস্থিতি সামাল দিতে ৪টি সরকারি হাসপাতালে ডেডিকেটেড সেল গঠন করা হয়েছে এবং তরল স্যালাইনের পর্যাপ্ত সরবরাহ নিশ্চিত করার কাজ চলছে।</p>
+      <div class="news-card-footer">Summarized by <span>FreeMedi AI</span></div>
+    </a>
+
+    <!-- Card 2 -->
+    <a href="https://www.bsmmu.edu.bd/news/example-robotic-surgery" target="_blank" class="news-magazine-card">
+      <div class="news-card-image-wrapper">
+        <div class="news-card-brand-icon"><i class="fa-solid fa-microscope"></i></div>
+        <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=500&q=80" alt="News">
+      </div>
+      <h3>BSMMU-তে সফল রোবোটিক লিভার ট্রান্সপ্ল্যান্ট সম্পন্ন!</h3>
+      <div class="news-card-meta">সোর্স: <span class="source-name">FreeMedi News</span> • ৫ ঘন্টা আগে</div>
+      <p class="news-card-description">বাংলাদেশের চিকিৎসা বিজ্ঞানের ইতিহাসে নতুন দিগন্ত উন্মোচিত হলো। বঙ্গবন্ধু শেখ মুজিব মেডিক্যাল বিশ্ববিদ্যালয়ে (BSMMU) প্রথমবারের মতো অত্যন্ত জটিল রোবোটিক সার্জারির মাধ্যমে একজন রোগীর সফল লিভার প্রতিস্থাপন করা হয়েছে। চিকিৎসকরা জানিয়েছেন, বর্তমানে দাতা ও গ্রহীতা দুজনেই সম্পূর্ণ সুস্থ আছেন।</p>
+      <div class="news-card-footer">Summarized by <span>FreeMedi AI</span></div>
+    </a>
+
+    <!-- Card 3 -->
+    <a href="https://www.ittefaq.com.bd/national/example-heatwave-guideline" target="_blank" class="news-magazine-card">
+      <div class="news-card-image-wrapper">
+        <div class="news-card-brand-icon"><i class="fa-solid fa-cloud-sun-rain"></i></div>
+        <img src="https://images.unsplash.com/photo-1504370805625-d32c54b16100?auto=format&fit=crop&w=500&q=80" alt="News">
+      </div>
+      <h3>তীব্র দাবদাহে হিট স্ট্রোক এড়াতে স্বাস্থ্য অধিদপ্তরের নির্দেশনাবলী</h3>
+      <div class="news-card-meta">সোর্স: <span class="source-name">ইত্তেফাক</span> • ১২ ঘন্টা আগে</div>
+      <p class="news-card-description">সারাদেশে চলমান তীব্র তাপপ্রবাহের কারণে হিট স্ট্রোকের ঝুঁকি এড়াতে স্বাস্থ্য অধিদপ্তর থেকে বিশেষ মেডিকেল গাইডলাইন জারি করা হয়েছে। প্রতিদিন প্রচুর পরিমাণে বিশুদ্ধ পানি ও খাবার স্যালাইন গ্রহণ করতে বলা হয়েছে। বিশেষ করে শিশু এবং বৃদ্ধদের বেলা ১১টা থেকে বিকেল ৪টা পর্যন্ত সরাসরি রোদে না যাওয়ার পরামর্শ দেওয়া হয়েছে।</p>
+      <div class="news-card-footer">Summarized by <span>FreeMedi AI</span></div>
+    </a>
+
+    <!-- Card 4 -->
+    <a href="https://www.bssnews.net/bangla/national/example-hpv-vaccine" target="_blank" class="news-magazine-card">
+      <div class="news-card-image-wrapper">
+        <div class="news-card-brand-icon"><i class="fa-solid fa-syringe"></i></div>
+        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=500&q=80" alt="News">
+      </div>
+      <h3>সারাদেশের ৬৪ জেলায় বিনামূল্যে জরায়ুমুখ ক্যান্সার প্রতিরোধী HPV ভ্যাকসিন</h3>
+      <div class="news-card-meta">সোর্স: <span class="source-name">বাসস</span> • ১ দিন আগে</div>
+      <p class="news-card-description">নারীদের স্বাস্থ্য সুরক্ষায় সরকারের পক্ষ থেকে দেশব্যাপী বিনামূল্যে জরায়ুমুখের ক্যান্সার প্রতিরোধী HPV টিকাদান কর্মসূচি শুরু হয়েছে। স্কুলগামী ৫ম থেকে ৯ম শ্রেণীর ছাত্রীরা এবং স্কুলের বাইরে থাকা ১০ থেকে ১৪ বছর বয়সী কিশোরীরা এই ক্যাম্পেইনের আওতায় বিনামূল্যে এই জীবনরক্ষাকারী টিকা গ্রহণ করতে পারবে।</p>
+      <div class="news-card-footer">Summarized by <span>FreeMedi AI</span></div>
+    </a>
+
+  </div>
+</section>
+<!-- AI FEATURES -->
 <h2 class="section-title" id="features">Smart Health Companion</h2>
 <p class="section-subtitle">The simplest healthcare solutions designed for every Bangladeshi family.</p>
 
 <section class="features-grid">
-  <!-- Feature 1: Symptom Checker -->
   <div class="feature-card">
     <div class="icon-box"><i class="fa-solid fa-notes-medical"></i></div>
     <h3>Symptom Assessment</h3>
     <p>Check symptoms instantly and get a preliminary prevention report generated by AI.</p>
   </div>
-
-  <!-- Feature 2: Report Interpreter -->
   <div class="feature-card">
     <div class="icon-box"><i class="fa-solid fa-file-medical-alt"></i></div>
     <h3>Lab Report Reader</h3>
     <p>Upload your blood test or medical lab reports to understand the parameters in simple Bangla.</p>
   </div>
-
-  <!-- Feature 3: Medicine & Vaccine Reminders -->
   <div class="feature-card">
     <div class="icon-box"><i class="fa-solid fa-bell"></i></div>
     <h3>Smart Reminders</h3>
     <p>Never miss your schedule. Automated medicine routines and child vaccination track alerts.</p>
   </div>
-
-  <!-- Feature 4: Health Education -->
   <div class="feature-card">
     <div class="icon-box"><i class="fa-solid fa-book-medical"></i></div>
     <h3>Health Education</h3>
@@ -826,15 +691,12 @@ opacity:.9;
   </div>
 </section>
 
-
-<!-- ==========================================
-     SECTION 2: LIVE DISEASE TRACKING MAP (BD)
-     ========================================== -->
+<!-- OUTBREAK MAP -->
 <h2 class="section-title" id="map">Bangladesh Health Outbreak Map</h2>
 <p class="section-subtitle">Real-time disease mapping and smart zone identifier based on active data input.</p>
 
 <section class="map-container">
-  <div class="map-placeholder"><a href="map.html">
+  <div class="map-placeholder"><a href="map.html" style="text-decoration:none; color:inherit;">
     <i class="fa-solid fa-map-location-dot"></i>
     <p>Bangladesh Regional Disease Map Integration</p>
     <span style="font-size: 12px; color:#777;">(OpenStreetMap/Google Map API placeholder for admin inputs)</span>
@@ -847,15 +709,11 @@ opacity:.9;
   </div>
 </section>
 
-
-<!-- ==========================================
-     SECTION 3: DOCTOR & HOSPITAL DIRECTORY
-     ========================================== -->
+<!-- DIRECTORY -->
 <h2 class="section-title" id="directory">Doctor & Hospital Directory</h2>
 <p class="section-subtitle">Section-wise office hours, schedules, and instant emergency hotlines.</p>
 
 <section class="directory-grid">
-  <!-- Card 1: Doctor Profile -->
   <div class="doc-card">
     <div class="doc-info">
       <i class="fa-solid fa-user"></i>
@@ -868,13 +726,10 @@ opacity:.9;
     <div class="doc-meta">
       <div class="meta-line"><span><i class="fa-regular fa-clock"></i> Office Hours:</span> <span>05:00 PM - 09:00 PM</span></div>
       <div class="meta-line"><span><i class="fa-solid fa-phone-volume"></i> Hotline:</span> <span class="hotline">16247</span></div>
-            <button class="btn-book">
-        Book Appointment
-        </button>
-      </div>
+      <button class="btn-book">Book Appointment</button>
+    </div>
   </div>
 
-  <!-- Card 2: Hospital Profile -->
   <div class="doc-card">
     <div class="doc-info">
       <i class="fa-solid fa-hospital"></i>
@@ -887,13 +742,10 @@ opacity:.9;
     <div class="doc-meta">
       <div class="meta-line"><span><i class="fa-regular fa-clock"></i> Office Hours:</span> <span>24 Hours Open</span></div>
       <div class="meta-line"><span><i class="fa-solid fa-phone-volume"></i> Emergency:</span> <span class="hotline">+880255165088</span></div>
-            <button class="btn-book">
-        Book Appointment
-        </button>
-      </div>
+      <button class="btn-book">Book Appointment</button>
+    </div>
   </div>
 </section>
-
 
 <!-- FOOTER -->
 <footer>
@@ -909,7 +761,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const target = parseInt(el.getAttribute('data-target'));
     const suffix = el.getAttribute('data-suffix');
     let count = 0;
-    
     const duration = 2000; 
     const increment = target / (duration / 16); 
     
