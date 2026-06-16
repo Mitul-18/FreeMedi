@@ -1,10 +1,25 @@
+<?php
+$servername = "localhost 3307";
+$username = "root";       // XAMPP-এর ডিফল্ট ইউজারনেম 'root'
+$password = "";           // XAMPP-এর ডিফল্ট পাসওয়ার্ড ফাঁকা থাকে
+$dbname = "freemedi";  // একটু আগে phpMyAdmin-এ যে নাম দিয়েছ
+
+// কানেকশন তৈরি করা
+$conn = new mysqli("localhost", "root", "", "freemedi", 3307);
+
+if ($conn->connect_error) {
+    die("DB Connection Failed: " . $conn->connect_error);
+}
+
+// সফল হলে (টেস্টিংয়ের জন্য এটি রাখতে পারো, পরে কেটে দিও)
+// echo "Connected successfully mama!";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FreeMedi- AI Health Assistant for BD</title>
-<!-- Font Icons for Medical & Tech UI -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 <style>
@@ -25,110 +40,117 @@ body {
 }
 
 /* =========================
-   PREMIUM FLOATING NAVBAR
+   PREMIUM FLOATING NAVBAR (SLIM VERSION)
 ========================= */
-.navbar{
-width:fit-content;
-max-width:1280px;
-margin:18px auto;
-padding:14px 26px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:45px;
-position:sticky;
-top:18px;
-z-index:999;
-background:rgba(255,255,255,.72);
-backdrop-filter:blur(18px);
--webkit-backdrop-filter:blur(18px);
-border:1px solid rgba(255,255,255,.6);
-border-radius:999px;
-box-shadow:
-0 12px 40px rgba(15,118,110,.08),
-0 2px 10px rgba(0,0,0,.03);
+.navbar {
+  width: fit-content;
+  max-width: 1280px;
+  margin: 12px auto;        /* উপর-নিচের গ্যাপ সামান্য কমানো হলো */
+  padding: 8px 24px;        /* টপ-বটম প্যাডিং ১৪px থেকে কমিয়ে ৮px করা হলো (মেজর হাইট রিডাকশন) */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 35px;                /* এলিমেন্টগুলোর মাঝের গ্যাপ ব্যালেন্স করা হলো */
+  position: sticky;
+  top: 12px;
+  z-index: 999;
+  background: rgba(255, 255, 255, .72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, .6);
+  border-radius: 999px;
+  box-shadow:
+    0 10px 30px rgba(15, 118, 110, .06),
+    0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
-.logo{
-display:flex;
-align-items:center;
-gap:12px;
-font-size:28px;
-font-family:'Poppins';
-font-weight:700;
-color:var(--primary-green);
-white-space:nowrap;
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;          /* ফন্ট সাইজ ২৮px থেকে ২৪px করে স্লিম করা হলো */
+  font-family: 'Poppins';
+  font-weight: 700;
+  color: var(--primary-green);
+  white-space: nowrap;
 }
 
-.logo img{
-height:42px;
-width:auto;
+.logo img {
+  height: 34px;             /* লোগোর হাইট ৪২px থেকে ৩৪px করা হলো */
+  width: auto;
 }
 
-.nav-links{
-display:flex;
-align-items:center;
-gap:8px;
-flex-wrap:nowrap;
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: nowrap;
 }
 
-.nav-links a{
-text-decoration:none;
-padding:12px 18px;
-border-radius:999px;
-color:#556170;
-font-size:15px;
-font-weight:500;
-transition:.25s;
+.nav-links a {
+  text-decoration: none;
+  padding: 8px 14px;        /* লিংকগুলোর প্যাডিং ১২px থেকে কমিয়ে ৮px করা হলো */
+  border-radius: 999px;
+  color: #556170;
+  font-size: 14px;          /* ফন্ট সাইজ ১৫px থেকে ১৪px করা হলো */
+  font-weight: 500;
+  transition: .25s;
 }
 
-.nav-links a:hover{
-background:rgba(15,118,110,.06);
-color:var(--primary-green);
+.nav-links a:hover {
+  background: rgba(15, 118, 110, .06);
+  color: var(--primary-green);
 }
 
-.nav-links a.active{
-background:#ecfdf5;
-color:var(--primary-green);
-font-weight:600;
+.nav-links a.active {
+  background: #ecfdf5;
+  color: var(--primary-green);
+  font-weight: 600;
 }
 
-.voice-btn{
-height:46px;
-padding:0 18px;
-border:none;
-border-radius:999px;
-background:#eefcf7;
-color:var(--primary-green);
-font-weight:600;
-cursor:pointer;
-transition:.25s;
+.voice-btn {
+  height: 38px;             /* বাটনের টোটাল হাইট ৪৬px থেকে কমিয়ে ৩৮px করা হলো */
+  padding: 0 14px;
+  border: none;
+  border-radius: 999px;
+  background: #eefcf7;
+  color: var(--primary-green);
+  font-weight: 600;
+  font-size: 13px;          /* বাটন টেক্সট স্লাইটলি ছোট করা হলো */
+  cursor: pointer;
+  transition: .25s;
 }
 
-.voice-btn:hover{ transform:translateY(-2px); background:#e1faf0; }
-
-.emergency-btn{
-height:46px;
-padding:0 22px;
-border-radius:999px;
-background:linear-gradient(135deg, #ef4444, #dc2626);
-color:white;
-text-decoration:none;
-display:flex;
-align-items:center;
-gap:10px;
-font-weight:700;
-box-shadow: 0 10px 25px rgba(239,68,68,.25);
-transition:.25s;
-position:relative;
-overflow:hidden;
+.voice-btn:hover { 
+  transform: translateY(-1px); 
+  background: #e1faf0; 
 }
 
-.emergency-btn:hover{ transform:translateY(-2px); }
+.emergency-btn {
+  height: 38px;             /* ইমার্জেন্সি বাটনের হাইটও ৪৬px থেকে কমিয়ে ৩৮px এ আনা হলো */
+  padding: 0 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 13px;
+  box-shadow: 0 6px 15px rgba(239, 68, 68, .2);
+  transition: .25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.emergency-btn:hover { 
+  transform: translateY(-1px); 
+}
 
 @media(max-width:1100px){
-.navbar{ width:92%; padding:18px; border-radius:28px; flex-direction:column; }
-.nav-links{ justify-content:center; flex-wrap:wrap; }
+  .navbar{ width:92%; padding:14px; border-radius:28px; flex-direction:column; }
+  .nav-links{ justify-content:center; flex-wrap:wrap; }
 }
 
 /* HERO SECTION */
@@ -258,7 +280,7 @@ overflow:hidden;
 @keyframes scrollMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
 /* ==========================================
-   NEW: PREMIUM MAGAZINE NEWS GRID (IMAGE_763EC4.PNG STYLE)
+   PREMIUM MAGAZINE NEWS GRID FRAMEWORK
    ========================================== */
 .news-section-container {
   max-width: 1200px;
@@ -293,7 +315,6 @@ overflow:hidden;
   font-weight: 700;
 }
 
-/* Navigation Arrows (As seen on top right of image_763ec4.png) */
 .news-nav-buttons {
   display: flex;
   gap: 10px;
@@ -319,14 +340,12 @@ overflow:hidden;
   border-color: var(--primary-green);
 }
 
-/* 4-Column Card Grid Framework */
 .news-magazine-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
-/* Premium Card Architecture (Updated to support Anchor Tag layout) */
 .news-magazine-card {
   background: var(--white);
   border-radius: 24px;
@@ -336,8 +355,8 @@ overflow:hidden;
   flex-direction: column;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-decoration: none; /* Block default underline */
-  color: inherit; /* Inherit global text colors */
+  text-decoration: none; 
+  color: inherit; 
   cursor: pointer;
 }
 .news-magazine-card:hover {
@@ -345,7 +364,6 @@ overflow:hidden;
   box-shadow: 0 12px 30px rgba(15, 118, 110, 0.06);
 }
 
-/* Thumbnail wrapper with fixed aspect-ratio */
 .news-card-image-wrapper {
   width: 100%;
   height: 160px;
@@ -362,7 +380,6 @@ overflow:hidden;
   object-fit: cover;
 }
 
-/* Floating dynamic medical category brand logo placeholder */
 .news-card-brand-icon {
   position: absolute;
   top: 12px;
@@ -379,7 +396,6 @@ overflow:hidden;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-/* Text elements matching the screenshot typography scale */
 .news-magazine-card h3 {
   font-size: 16px;
   line-height: 1.4;
@@ -390,10 +406,9 @@ overflow:hidden;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  cursor: pointer;
 }
 
-.news-magazine-card h3:hover {
+.news-magazine-card:hover h3 {
   color: var(--primary-green);
 }
 
@@ -415,7 +430,7 @@ overflow:hidden;
   color: #4b5563;
   margin: 0 0 16px 0;
   display: -webkit-box;
-  -webkit-line-clamp: 5; /* Clean text trimming */
+  -webkit-line-clamp: 5; 
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -434,7 +449,6 @@ overflow:hidden;
   color: #6b7280;
 }
 
-/* Responsive breakdowns */
 @media (max-width: 1024px) {
   .news-magazine-grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -442,7 +456,6 @@ overflow:hidden;
   .news-magazine-grid { grid-template-columns: 1fr; }
   .news-section-header { flex-direction: column; align-items: flex-start; gap: 15px; }
 }
-
 
 /* SECTION HEADINGS general */
 .section-title { text-align: center; font-family: 'Poppins', sans-serif; font-size: 28px; color: var(--primary-green); margin: 60px 0 10px 0; }
@@ -488,7 +501,6 @@ footer { text-align: center; padding: 30px; background: var(--light-mint); borde
 </head>
 <body>
 
-<!-- NAVBAR -->
 <div class="navbar">
   <div class="logo">
     <img src="assets/logo/logo.png" alt="">
@@ -505,14 +517,12 @@ footer { text-align: center; padding: 30px; background: var(--light-mint); borde
   </div>
 </div>
 
-<!-- HERO WRAPPER -->
 <div class="hero-wrapper">
   <section class="hero">
     <div class="hero-text">
       <h1>Ai Health Assistant<br>For Bangladesh</h1>
       <p>আপনার বিশ্বস্ত স্বাস্থ্য সঙ্গী। কৃত্রিম বুদ্ধিমত্তার সাহায্যে ঘরে বসেই রোগ নির্ণয়, লক্ষণ পরীক্ষা এবং সঠিক ডাক্তার খুঁজুন সহজে ও নিরাপদে।</p>
 
-      <!-- SEARCH BOX -->
       <div class="search-container">
         <div class="search-main">
           <i class="fa-solid fa-robot main-icon"></i>
@@ -536,7 +546,7 @@ footer { text-align: center; padding: 30px; background: var(--light-mint); borde
               <option>কোন ধরনের ডাক্তার খুঁজছেন?</option>
               <option>Medicine Specialist</option>
               <option>Cardiologist</option>
-              <option>Pediatrician (শিশু বিশেষজ্ঞ)</option>
+              <option>Pediatrician (Extremely Required)</option>
             </select>
           </div>
           <button class="btn-search">Analyze</button>
@@ -550,7 +560,6 @@ footer { text-align: center; padding: 30px; background: var(--light-mint); borde
   </section>
 </div>
 
-<!-- STATS CARDS SECTION -->
 <section class="stats-grid">
   <div class="stat-card">
     <h2 class="counter" data-target="50000" data-suffix="K+">0</h2>
@@ -570,7 +579,6 @@ footer { text-align: center; padding: 30px; background: var(--light-mint); borde
   </div>
 </section>
 
-<!-- HOSPITAL INFINITE MARQUEE ROW -->
 <section class="partner-marquee-section">
   <span class="partner-tag">Trusted Healthcare Infrastructure</span>
   <h2>Real-time Partner Network</h2>
@@ -585,7 +593,6 @@ footer { text-align: center; padding: 30px; background: var(--light-mint); borde
       <a href="https://www.evercarebd.com/" target="_blank" class="partner-pill"><i class="fa-solid fa-user-doctor" style="color: #2563eb;"></i><span>Evercare BD</span></a>
       <a href="https://www.nhf.org.bd/" target="_blank" class="partner-pill"><i class="fa-solid fa-heart-pulse" style="color: #db2777;"></i><span>National Heart Foundation</span></a>
       
-      <!-- Duplicate Set for Infinity effect -->
       <a href="https://www.bsmmu.ac.bd/" target="_blank" class="partner-pill"><i class="fa-solid fa-building-shield" style="color: #0284c7;"></i><span>BSMMU (PG Hospital)</span></a>
       <a href="https://dmch.gov.bd/" target="_blank" class="partner-pill"><i class="fa-solid fa-hospital" style="color: #dc2626;"></i><span>Dhaka Medical College</span></a>
       <a href="https://dghs.gov.bd/" target="_blank" class="partner-pill"><i class="fa-solid fa-hand-holding-medical" style="color: #16a34a;"></i><span>DGHS Bangladesh</span></a>
@@ -596,16 +603,12 @@ footer { text-align: center; padding: 30px; background: var(--light-mint); borde
   </div>
 </section>
 
-<!-- ==========================================
-     NEW: PREMIUM HEALTH MAGAZINE GRID SECTION (FULLY CLICKABLE)
-     ========================================== */ -->
 <section class="news-section-container">
   <div class="news-section-header">
     <div class="news-label-group">
       <span class="section-tag">TODAY'S FEED</span>
       <h2>What our users are reading right now</h2>
     </div>
-    <!-- Arrow utilities from image_763ec4.png -->
     <div class="news-nav-buttons">
       <div class="news-nav-btn"><i class="fa-solid fa-arrow-left"></i></div>
       <div class="news-nav-btn"><i class="fa-solid fa-arrow-right"></i></div>
@@ -613,58 +616,37 @@ footer { text-align: center; padding: 30px; background: var(--light-mint); borde
   </div>
 
   <div class="news-magazine-grid">
-    
-    <!-- Card 1: Open in a new tab using target="_blank" -->
-    <a href="https://prothomalo.com/bangladesh/capital/example-dengue-news" target="_blank" class="news-magazine-card">
-      <div class="news-card-image-wrapper">
-        <div class="news-card-brand-icon"><i class="fa-solid fa-virus-covid"></i></div>
-        <img src="https://images.unsplash.com/photo-1584634731339-252c581abfc5?auto=format&fit=crop&w=500&q=80" alt="News">
-      </div>
-      <h3>রাজধানীতে ডেঙ্গুর প্রকোপ বৃদ্ধি, ৪টি হাসপাতালে বিশেষ সেল গঠন</h3>
-      <div class="news-card-meta">সোর্স: <span class="source-name">DGHS / প্রথম আলো</span> • ২ ঘন্টা আগে</div>
-      <p class="news-card-description">বর্ষা মৌসুমের শুরুতেই রাজধানী জুড়ে ডেঙ্গুর আক্রমণ আশঙ্কাজনক হারে বৃদ্ধি পেয়েছে। স্বাস্থ্য অধিদপ্তরের জরুরি বিজ্ঞপ্তিতে নাগরিকদের সচেতন থাকার নির্দেশ দেওয়া হয়েছে। ইতোমধ্যে পরিস্থিতি সামাল দিতে ৪টি সরকারি হাসপাতালে ডেডিকেটেড সেল গঠন করা হয়েছে এবং তরল স্যালাইনের পর্যাপ্ত সরবরাহ নিশ্চিত করার কাজ চলছে।</p>
-      <div class="news-card-footer">Summarized by <span>FreeMedi AI</span></div>
-    </a>
+    <?php
+    // ডেটাবেস থেকে আইডি অনুযায়ী ডিসেন্ডিং অর্ডারে ডাটা আনা (নতুন নিউজ সবার আগে আসবে)
+    $sql = "SELECT * FROM news ORDER BY `No.` DESC";
+    $result = $conn->query($sql);
 
-    <!-- Card 2 -->
-    <a href="https://www.bsmmu.edu.bd/news/example-robotic-surgery" target="_blank" class="news-magazine-card">
-      <div class="news-card-image-wrapper">
-        <div class="news-card-brand-icon"><i class="fa-solid fa-microscope"></i></div>
-        <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=500&q=80" alt="News">
-      </div>
-      <h3>BSMMU-তে সফল রোবোটিক লিভার ট্রান্সপ্ল্যান্ট সম্পন্ন!</h3>
-      <div class="news-card-meta">সোর্স: <span class="source-name">FreeMedi News</span> • ৫ ঘন্টা আগে</div>
-      <p class="news-card-description">বাংলাদেশের চিকিৎসা বিজ্ঞানের ইতিহাসে নতুন দিগন্ত উন্মোচিত হলো। বঙ্গবন্ধু শেখ মুজিব মেডিক্যাল বিশ্ববিদ্যালয়ে (BSMMU) প্রথমবারের মতো অত্যন্ত জটিল রোবোটিক সার্জারির মাধ্যমে একজন রোগীর সফল লিভার প্রতিস্থাপন করা হয়েছে। চিকিৎসকরা জানিয়েছেন, বর্তমানে দাতা ও গ্রহীতা দুজনেই সম্পূর্ণ সুস্থ আছেন।</p>
-      <div class="news-card-footer">Summarized by <span>FreeMedi AI</span></div>
-    </a>
-
-    <!-- Card 3 -->
-    <a href="https://www.ittefaq.com.bd/national/example-heatwave-guideline" target="_blank" class="news-magazine-card">
-      <div class="news-card-image-wrapper">
-        <div class="news-card-brand-icon"><i class="fa-solid fa-cloud-sun-rain"></i></div>
-        <img src="https://images.unsplash.com/photo-1504370805625-d32c54b16100?auto=format&fit=crop&w=500&q=80" alt="News">
-      </div>
-      <h3>তীব্র দাবদাহে হিট স্ট্রোক এড়াতে স্বাস্থ্য অধিদপ্তরের নির্দেশনাবলী</h3>
-      <div class="news-card-meta">সোর্স: <span class="source-name">ইত্তেফাক</span> • ১২ ঘন্টা আগে</div>
-      <p class="news-card-description">সারাদেশে চলমান তীব্র তাপপ্রবাহের কারণে হিট স্ট্রোকের ঝুঁকি এড়াতে স্বাস্থ্য অধিদপ্তর থেকে বিশেষ মেডিকেল গাইডলাইন জারি করা হয়েছে। প্রতিদিন প্রচুর পরিমাণে বিশুদ্ধ পানি ও খাবার স্যালাইন গ্রহণ করতে বলা হয়েছে। বিশেষ করে শিশু এবং বৃদ্ধদের বেলা ১১টা থেকে বিকেল ৪টা পর্যন্ত সরাসরি রোদে না যাওয়ার পরামর্শ দেওয়া হয়েছে।</p>
-      <div class="news-card-footer">Summarized by <span>FreeMedi AI</span></div>
-    </a>
-
-    <!-- Card 4 -->
-    <a href="https://www.bssnews.net/bangla/national/example-hpv-vaccine" target="_blank" class="news-magazine-card">
-      <div class="news-card-image-wrapper">
-        <div class="news-card-brand-icon"><i class="fa-solid fa-syringe"></i></div>
-        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=500&q=80" alt="News">
-      </div>
-      <h3>সারাদেশের ৬৪ জেলায় বিনামূল্যে জরায়ুমুখ ক্যান্সার প্রতিরোধী HPV ভ্যাকসিন</h3>
-      <div class="news-card-meta">সোর্স: <span class="source-name">বাসস</span> • ১ দিন আগে</div>
-      <p class="news-card-description">নারীদের স্বাস্থ্য সুরক্ষায় সরকারের পক্ষ থেকে দেশব্যাপী বিনামূল্যে জরায়ুমুখের ক্যান্সার প্রতিরোধী HPV টিকাদান কর্মসূচি শুরু হয়েছে। স্কুলগামী ৫ম থেকে ৯ম শ্রেণীর ছাত্রীরা এবং স্কুলের বাইরে থাকা ১০ থেকে ১৪ বছর বয়সী কিশোরীরা এই ক্যাম্পেইনের আওতায় বিনামূল্যে এই জীবনরক্ষাকারী টিকা গ্রহণ করতে পারবে।</p>
-      <div class="news-card-footer">Summarized by <span>FreeMedi AI</span></div>
-    </a>
-
+    if ($result && $result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            $title       = $row['News Title'];
+            $photo_url   = $row['Photo'];
+            $description = $row['Description'];
+            $ref_link    = $row['reference'];
+            ?>
+            <a href="<?php echo htmlspecialchars($ref_link); ?>" target="_blank" class="news-magazine-card">
+              <div class="news-card-image-wrapper">
+                <div class="news-card-brand-icon"><i class="fa-solid fa-notes-medical"></i></div>
+                <img src="<?php echo htmlspecialchars($photo_url); ?>" alt="News Image">
+              </div>
+              <h3><?php echo htmlspecialchars($title); ?></h3>
+              <div class="news-card-meta">সোর্স: <span class="source-name">FreeMedi Verified</span></div>
+              <p class="news-card-description"><?php echo htmlspecialchars($description); ?></p>
+              <div class="news-card-footer">Summarized by <span>FreeMedi AI</span></div>
+            </a>
+            <?php
+        }
+    } else {
+        echo "<p style='grid-column: 1/-1; text-align: center; color: #6b7280; padding: 40px;'>এখনই কোনো নিউজ এভেইলঅ্যাবল নেই mama! phpMyAdmin থেকে Insert করো।</p>";
+    }
+    ?>
   </div>
 </section>
-<!-- AI FEATURES -->
+
 <h2 class="section-title" id="features">Smart Health Companion</h2>
 <p class="section-subtitle">The simplest healthcare solutions designed for every Bangladeshi family.</p>
 
@@ -691,7 +673,6 @@ footer { text-align: center; padding: 30px; background: var(--light-mint); borde
   </div>
 </section>
 
-<!-- OUTBREAK MAP -->
 <h2 class="section-title" id="map">Bangladesh Health Outbreak Map</h2>
 <p class="section-subtitle">Real-time disease mapping and smart zone identifier based on active data input.</p>
 
@@ -709,7 +690,6 @@ footer { text-align: center; padding: 30px; background: var(--light-mint); borde
   </div>
 </section>
 
-<!-- DIRECTORY -->
 <h2 class="section-title" id="directory">Doctor & Hospital Directory</h2>
 <p class="section-subtitle">Section-wise office hours, schedules, and instant emergency hotlines.</p>
 
@@ -747,12 +727,10 @@ footer { text-align: center; padding: 30px; background: var(--light-mint); borde
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   © 2026 FreeMedi | Building a Safer and Smarter Healthcare for Bangladesh 🇧🇩
 </footer>
 
-<!-- AUTOMATED NUMBER COUNTER JAVASCRIPT -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const counters = document.querySelectorAll('.counter');
